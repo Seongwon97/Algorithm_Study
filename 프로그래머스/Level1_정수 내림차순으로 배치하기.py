@@ -4,4 +4,5 @@ def solution(n):
     strN = sorted(strN, reverse=True) 
     temp = "".join(strN)
     answer = int(temp)
+    
     return answer

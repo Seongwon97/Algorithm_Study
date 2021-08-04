@@ -4,6 +4,7 @@ def solution(s):
     for leng in range(1, int(len(s)/2)+1):
         result =''
         start = 0
+
         
         while start < (len(s)):
             move = leng

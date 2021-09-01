@@ -5,7 +5,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-public class DFS {
+// BFS는 visited, needVisited를 모두 queue로 구성
+public class BFS {
 	public static void main(String[] args) {
 		HashMap<String, String[]> grapgh = new HashMap<>();
 		String[][] nodeInfo = {{"B","C","D"},
@@ -28,18 +29,17 @@ public class DFS {
 		grapgh.put("G", nodeInfo[6]);
 		grapgh.put("H", nodeInfo[7]);
 		
-		System.out.println(dfs(grapgh, "A"));
+		System.out.println(bfs(grapgh, "A"));
 	}
 	
-	public static List<String> dfs(HashMap<String, String[]> grapgh, String search){
+	public static List<String> bfs(HashMap<String, String[]> grapgh, String search){
 		List<String> visited = new ArrayList<>();
 		List<String> needVisit = new ArrayList<>();
 		String node;
 		
 		needVisit.add(search);
 		while (!needVisit.isEmpty()) {
-			node = needVisit.remove(needVisit.size()-1); //bfs와 다르게 Stack을 사용하여 맨 뒤 수를 다음 node로 사용
-			
+			node = needVisit.remove(0);
 			// node가 visited에 없으면 visited에 추가 및 node의 연결된 node를 need_visited에 추가!
 			if (!visited.contains(node)) {
 				visited.add(node);

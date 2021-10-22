@@ -3,6 +3,7 @@ package algorithm;
 import java.util.*;
 import java.io.*;
 
+
 public class B1759 {
 
 	static int L;

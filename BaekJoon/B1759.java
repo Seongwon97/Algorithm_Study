@@ -32,23 +32,23 @@ public class B1759 {
 		for (int i=0; i< (C-3); i++) {
 			StringBuilder cipher = new StringBuilder();
 			cipher.append(candidate[i]);
-			if (checkVowel(candidate[i])) dfs(1, i, 1, cipher.toString());
-			else dfs(1, i, 0, cipher.toString());
+			if (checkVowel(candidate[i])) dfs(1, i, 1, 0, cipher.toString());
+			else dfs(1, i, 0, 1, cipher.toString());
 		}
 		
 		System.out.println(result.toString());
 		
 	}
-	static void dfs(int currentLen, int currentPointer, int numberOfVowels, String cipher) {
+	static void dfs(int currentLen, int currentPointer, int numberOfVowels, int numOfConsonant, String cipher) {
 		if (currentLen == L) {
-			if (1 <= numberOfVowels) {
+			if (1 <= numberOfVowels && 2 <= numOfConsonant) {
 				result.append(cipher+"\n");
 			}
 		}
 		else if ((C-currentPointer-1) >= (L-currentLen)) {
 			for (int i=(currentPointer+1); i< (C- L + currentLen + 1);i++) {
-				if (checkVowel(candidate[i])) dfs(currentLen+1, i, numberOfVowels+1, cipher+candidate[i]);
-				else dfs(currentLen+1, i, numberOfVowels, cipher+candidate[i]);
+				if (checkVowel(candidate[i])) dfs(currentLen+1, i, numberOfVowels+1, numOfConsonant, cipher+candidate[i]);
+				else dfs(currentLen+1, i, numberOfVowels, numOfConsonant+1, cipher+candidate[i]);
 			}
 		}
 	}

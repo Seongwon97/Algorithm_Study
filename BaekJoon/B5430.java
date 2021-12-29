@@ -39,7 +39,10 @@ public class Main {
 
             if (command.charAt(i) == 'D') {
                 try {
-                    numList.remove(0);
+                    if (reverseCount)
+                        numList.remove(numList.size() - 1);
+                    else
+                        numList.remove(0);
                 } catch (IndexOutOfBoundsException e) {
                     return "error\n";
                 }

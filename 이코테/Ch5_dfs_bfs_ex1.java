@@ -1,7 +1,7 @@
 package chapter3_greedy;
-
+// 음료수 얼려 먹기
 public class Ch5_dfs_bfs_ex1 {
-    // 음료수 얼려 먹기
+
     public static void main(String[] args) {
         int[][] iceTray = {{0, 0, 1, 1, 0},
                 {0, 0, 0, 1, 1},

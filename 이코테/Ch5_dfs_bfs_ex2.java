@@ -2,7 +2,7 @@ package chapter3_greedy;
 
 import java.util.LinkedList;
 import java.util.Queue;
-
+// 미로탈출
 public class Ch5_dfs_bfs_ex2 {
 
     public static void main(String[] args) {

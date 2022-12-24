@@ -2,7 +2,7 @@ package chapter3_greedy;
 
 import java.util.Arrays;
 import java.util.Collections;
-
+// 위에서 아래로
 public class Ch6_sort_ex1 {
 
     public static void main(String[] args) {

@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
-
+// 큰 수의 법칙
 public class Ch3_greedy_ex2 {
 
     public static void main(String[] args) throws IOException {

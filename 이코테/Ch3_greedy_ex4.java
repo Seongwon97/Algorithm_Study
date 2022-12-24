@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
-
+// 1이 될 때까지
 public class Ch3_greedy_ex4 {
 
     public static void main(String[] args) throws IOException {

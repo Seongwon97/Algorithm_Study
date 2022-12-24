@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
-
+// 숫자 카드 게임
 public class Ch3_greedy_ex3 {
 
     public static void main(String[] args) throws IOException {

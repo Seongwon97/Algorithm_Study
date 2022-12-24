@@ -3,7 +3,7 @@ package chapter3_greedy;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+// 성적이 낮은 순서로 학생 출력하기
 public class Ch6_sort_ex2 {
 
     public static void main(String[] args) {

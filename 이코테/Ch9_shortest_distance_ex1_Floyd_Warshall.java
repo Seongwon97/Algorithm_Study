@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-// 미래 도시 (Floyd-Warchall)
+// 미래 도시 (Floyd-Warcshall)
 public class Ch9_shortest_distance_ex1_Floyd_Warshall {
 
     private static final int MAX_DISTANCE = 101;

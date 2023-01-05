@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-// 연구소 (BFS)
+// 연구소 (DFS)
 // https://www.acmicpc.net/problem/14502
 public class Ch13_dfs_bfs_Q16 {
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-// 인구 이동 (BFS)
+// 인구 이동 (DFS)
 // https://www.acmicpc.net/problem/16234
 public class B16234 {
 

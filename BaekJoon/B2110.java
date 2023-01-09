@@ -6,55 +6,66 @@ package baekjoon;
 
 // 이진탐색은 재귀적/반복적으로 풀 수 있는데 일반적으로 문제들에서는 반복적으로 푸는게 더 유리하다.
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-
+// 공유기 설치
+// https://www.acmicpc.net/problem/2110
 public class B2110 {
 
-	public static void main(String[] args) throws Exception{
-		// TODO Auto-generated method stub
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
-		StringTokenizer st = new StringTokenizer(br.readLine());
-		int numOfHouse= Integer.parseInt(st.nextToken());
-		int numOfWifi = Integer.parseInt(st.nextToken());
-		
-		int[] house = new int[numOfHouse];
+	public static void main(String[] args) {
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			int N = Integer.parseInt(st.nextToken());
+			int C = Integer.parseInt(st.nextToken());
 
-		for (int i=0; i<numOfHouse; i++) {
-			house[i] = Integer.parseInt(br.readLine());
-		}
-		
-		Arrays.sort(house);
+			int[] positions = new int[N];
+			for (int i = 0; i < N; i++) {
+				positions[i] = Integer.parseInt(br.readLine());
+			}
+			Arrays.sort(positions);
 
-		
-		int result = 0;
-		int start = 1; // 현재 가능한 최소 이동거리
-		int end = house[numOfHouse-1] - house[0]; // 현재 이동가능한 최대 이동거리
-		
-		
-		while (start <= end) {
-			int midGap = (start+end)/2;
-			int value = house[0];
-			int count = 1;
-			
-			
-			for (int i=1; i<numOfHouse; i++) {
-				if (house[i] >= (value + midGap)) {
-					value = house[i];
-					count++;
+			int answer = 0;
+			int startGap = 1;
+			int endGap = positions[N - 1] - positions[0];
+
+			while (startGap <= endGap) {
+				int midGap = (startGap + endGap) / 2;
+				int currentPoint = positions[0];
+				int count = 1;
+
+				for (int i = 1; i < N; i++) {
+					if (positions[i] >= currentPoint + midGap) {
+						currentPoint = positions[i];
+						count++;
+					}
+				}
+
+				if (count >= C) {
+					startGap = midGap + 1;
+					answer = midGap;
+				} else {
+					endGap = midGap - 1;
 				}
 			}
 
-			if (count >= numOfWifi) {
-				start = midGap + 1;
-				result = midGap;
-			}
-			else end = midGap-1;
-
+			System.out.println(answer);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
 		}
-		System.out.println(result);
 	}
 }
+/*
+Input
+5 3
+1
+2
+8
+4
+9
+
+Output
+3
+ */

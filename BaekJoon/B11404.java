@@ -83,13 +83,6 @@ Input
 5 2 4
 
 Output
-1
----
-Input
-sunday
-saturday
-
-Output
 0 2 3 1 4
 12 0 15 2 5
 8 5 0 1 1

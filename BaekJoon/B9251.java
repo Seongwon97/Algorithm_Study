@@ -1,51 +1,44 @@
-package baekjoon;
+package BaekJoon;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-
-
+// LCS
+// https://www.acmicpc.net/problem/9251
 public class B9251 {
 
-	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
-		
-		char[] strArr1 = br.readLine().toCharArray();
-		char[] strArr2 = br.readLine().toCharArray();
-		
-		int[][] dp = new int[strArr2.length+1][strArr1.length];
-		
-		for (int i=0; i< strArr1.length; i++) {
-			dp[0][i] = 0;
-		}
-		
+    public static void main(String[] args) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+            String s1 = br.readLine();
+            String s2 = br.readLine();
 
-		for (int i=0; i<strArr2.length ; i++) {
-			int max = 0;
-			for (int j=0; j<strArr1.length; j++) {
-				dp[i+1][j] = dp[i][j];
-				if (strArr2[i] == strArr1[j]) {
-					for (int k=0; k< j; k++) {
-						if (dp[i][k] > max) max = dp[i][k];
-					}
-					
-					dp[i+1][j] = dp[i+1][j] < max+1 ? max+1: dp[i+1][j];
-				}
-			}
-		}
-		
-		
-		//System.out.println(1);
-		
-		int max = 0;
-		for (int j=0; j<strArr1.length; j++) {
-			if (dp[strArr2.length][j] > max) max = dp[strArr2.length][j];
-		}
-		
-		System.out.println(max);
-	}
+            int s1Length = s1.length();
+            int s2Length = s2.length();
 
+            int[][] dp = new int[s1Length + 1][s2Length + 1];
+            for (int i = 1; i < s1Length + 1; i++) {
+                for (int j = 1; j < s2Length + 1; j++) {
+                    if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
+                        dp[i][j] = dp[i - 1][j - 1] + 1;
+                    } else {
+                        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                    }
+                }
+            }
+
+            System.out.println(dp[s1Length][s2Length]);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
+
+/*
+Input
+ACAYKP
+CAPCAK
+
+Output
+4
+*/

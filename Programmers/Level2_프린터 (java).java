@@ -1,34 +1,41 @@
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 class Solution {
     public int solution(int[] priorities, int location) {
-        int answer = 0; // 순서 count
-        int loc = location; // 출력하고자하는 값의 현재 위치를 나타내는 변수
-        int first; // List의 첫번째 값을 저장할 변수
-        int max;
-                
-        List<Integer> jobList = new LinkedList<>();
-        for (int i: priorities)
-            jobList.add(i);
-        
-        max = Collections.max(jobList);
-        
-        while (true) {
-            first = jobList.remove(0);   
-            if (first >= max) {
-                if (!jobList.isEmpty())
-                    max = Collections.max(jobList);
-                answer++;
-                if (loc == 0) break;
-                else loc--;
-            }
-            else {
-                jobList.add(first);
-                if (loc == 0) 
-                    loc = (jobList.size()-1);
-                else loc--;
-            }              
+        int count = 0;
+        int[] numOfPriorities = new int[11];
+        Queue<Integer> queue = new LinkedList<>();
+
+        for (int i = 0; i < priorities.length; i++) {
+            numOfPriorities[priorities[i]]++;
+            queue.add(i);
         }
-        return answer;
+
+        while (!queue.isEmpty()) {
+            int polled = queue.poll();
+
+            int polledPriority = priorities[polled];
+            if (hasMorePriority(numOfPriorities, polledPriority)) {
+                queue.add(polled);
+            } else {
+                count++;
+                if (polled == location) {
+                    break;
+                }
+                numOfPriorities[priorities[polled]]--;
+            }
+        }
+
+        return count;
+    }
+
+    private boolean hasMorePriority(int[] numOfPriorities, int polledPriority) {
+        for (int i = polledPriority + 1; i < 11; i++) {
+            if (numOfPriorities[i] > 0) {
+                return true;
+            }
+        }
+        return false;
     }
 }

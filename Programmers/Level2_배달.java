@@ -12,7 +12,7 @@ class Solution {
             map.get(r[1]).add(new Node(r[0], r[2]));
         }
 
-        int[] distance = kruskal(map, N, 1);
+        int[] distance = dijkstra(map, N, 1);
 
         int answer = 0;
         for (int i = 1; i <= N; i++) {
@@ -24,7 +24,7 @@ class Solution {
         return answer;
     }
 
-    private int[] kruskal(Map<Integer, List<Node>> map, int N, int start) {
+    private int[] dijkstra(Map<Integer, List<Node>> map, int N, int start) {
         int[] distance = new int[N + 1];
         Arrays.fill(distance, Integer.MAX_VALUE);
         distance[1] = 0;
